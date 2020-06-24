@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+
+    <!-- The core Firebase JS SDK and FireBase database SDK -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-database.js"></script>
+
+    <script>
+        // Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCB90blN7DvCWp00N7wQT1QpIogrOCtPw4",
+            authDomain: "wsizmobileproject.firebaseapp.com",
+            databaseURL: "https://wsizmobileproject.firebaseio.com",
+            projectId: "wsizmobileproject",
+            storageBucket: "wsizmobileproject.appspot.com",
+            messagingSenderId: "266563309141",
+            appId: "1:266563309141:web:c5a61eb6073bef35640edc"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            // Firabase is asynchronous so map elements linked to data from it has to be activated from Firabase callback
+            var dbRef = firebase.database().ref().child('stacje').child('1');
+            var pointer=null;
+            dbRef.on('value', snap => {
+                pointer = snap.val();
+                console.log(pointer.v);
+                var a = pointer.v;
+                var b = pointer.v1;
+                // The location of Pointer
+                var latlng = {lat: a, lng: b};
+                // The map, centered at Pointer
+                var map = new google.maps.Map(
+                    document.getElementById('map'), {zoom: 4, center: latlng});
+                // The marker, positioned at Pointer
+                var marker = new google.maps.Marker({position: latlng, map: map});
+        });
+        // Initialize and add the map
+        
+
+        }
+    </script>
+    <!--Api Key for google maps-->
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5CedxN3ZZc9q7kWKfKlyxXNOr7xi0ZDw&callback=initMap">
+    
+    </script>
+  </body>
+</html>
