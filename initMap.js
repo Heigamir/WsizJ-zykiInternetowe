@@ -28,10 +28,9 @@
                         '</div>'+
                         '<h1 id="firstHeading" class="firstHeading">'+name+'</h1>'+
                         '<div id="bodyContent">'+
-                        '<p><b>Diesel </b>'+pointer.price+'</p>'+
-                        '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-                        'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-                        '(last visited June 22, 2009).</p>'+
+                        '<p><b>Diesel: </b>'+pointer.price+'</p>'+
+                        '<p><b>Petrol 95: </b>'+pointer.pbprice+'</p>'+
+                        '<p><b>LPG: </b>'+pointer.lpgprice+'</p>'+
                         '</div>'+
                         '</div>';
                         var infowindow = new google.maps.InfoWindow({
